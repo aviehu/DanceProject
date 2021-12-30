@@ -6,6 +6,7 @@ import { Button, TextField } from '@mui/material';
 import { Stack } from '@mui/material';
 import { CircularProgress, Box } from '@mui/material';
 import { useParams } from 'react-router-dom';
+import Controller from './Controller';
 
 const Network = () => {
     const [data, setData] = useState({})
@@ -22,13 +23,7 @@ const Network = () => {
         }
     }, [])
 
-    const loadGraph = async (url, type) => {
-        const requestOptions = {
-            method: 'GET',
-            headers: { 'Content-Type': 'application/json' },
-        };
-        const response = await fetch(url, requestOptions)
-        const data = await response.json()
+    const loadGraph = async (data, type) => {
         let newNodes = data.nodes
         if(search.length > 2) {
             newNodes = newNodes.map((node) => {
@@ -55,19 +50,21 @@ const Network = () => {
 
     const loadFirst = () => {
         setData({})
-        loadGraph('http://localhost:8080/firstng', 1)
+        setTimeout(() => loadGraph(Controller.getFirstNG(), 1), 50)
+        
     }
 
     
     const loadSecond = () => {
         setData({})
-        loadGraph('http://localhost:8080/secondng', 2)
+        setTimeout(() => loadGraph(Controller.getSecondNG(), 2), 50)
     }
 
     
     const loadthird = () => {
         setData({})
-        loadGraph('http://localhost:8080/thirdng', 3)
+        setTimeout(() => loadGraph(Controller.getThirdNG(), 3), 50)
+
     }
 
     const runSearch = () => {

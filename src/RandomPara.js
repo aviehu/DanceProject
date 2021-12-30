@@ -3,6 +3,7 @@ import Content from "./Content.js"
 import { useState, useEffect } from "react";
 import { Button } from "@mui/material";
 import Stack from '@mui/material/Stack';
+import Controller from "./Controller.js";
 
 const RandomPara = () => {
     const colors = ['#34a853', '#555555','#f1c232', '#f44336', '#16537e' ]
@@ -18,9 +19,9 @@ const RandomPara = () => {
 
     const getNewPhrase = async () => {
         try {
-            const data =await fetch('http://localhost:8080/randomparagraph')
-            const ans = await data.json()
+            const ans = Controller.getRandomParagraph()
             setData(ans)
+            setDisplay(false)
         } catch (e) {
             setData("Eror...")
         }

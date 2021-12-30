@@ -1,18 +1,14 @@
 import WordGraph from './WordGraph';
 import Page from './Page';
 import { useEffect, useState } from 'react';
-import { CircularProgress, Box } from '@mui/material';
+import { CircularProgress, Box } from '@mui/material'
+import Controller from './Controller';
 
 const WordCount = () => {
     const [data, setData] = useState({})
 
     useEffect(async () => {
-        const requestOptions = {
-            method: 'GET',
-            headers: { 'Content-Type': 'application/json' },
-        };
-        const response = await fetch('http://localhost:8080/words', requestOptions)
-        const data = await response.json()
+        const data = Controller.getWordsCount()
         setData(data)
     }, [])
 

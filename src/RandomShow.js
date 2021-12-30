@@ -3,7 +3,7 @@ import Content from "./Content.js"
 import { useState, useEffect } from "react";
 import { Button } from "@mui/material";
 import Stack from '@mui/material/Stack';
-
+import Controller from "./Controller.js";
 
 const RandomShow = () => {
     const hebrew={
@@ -22,8 +22,7 @@ const RandomShow = () => {
     
     const getNewShow = async () => {
         try {
-            const data =await fetch('http://localhost:8080/randomshow')
-            const ans = await data.json()
+            const ans = Controller.getRandShow()
             setShow(ans)
             setDisplay(false)
         } catch (e) {

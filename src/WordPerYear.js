@@ -4,6 +4,7 @@ import {
     useParams
 } from "react-router-dom";
 import { useEffect, useState } from 'react';
+import Controller from './Controller';
 
 const WordPerYear = () => {
     const [data, setData] = useState({})
@@ -11,13 +12,7 @@ const WordPerYear = () => {
     const currWord = word.substring(1)
 
     useEffect(async () => {
-        const requestOptions = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ word: currWord })
-        };
-        const response = await fetch('http://localhost:8080/wordperyear', requestOptions)
-        const data = await response.json()
+        const data = Controller.getAvgWordPerYear(currWord)
         setData(data)
     }, [])
 
