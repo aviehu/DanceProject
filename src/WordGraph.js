@@ -1,7 +1,9 @@
 import { useRef, useEffect } from "react";
 import Page from "./Page";
+import { useNavigate } from "react-router-dom";
 
 const WordGraph = ({ data }) => {
+    const navigate = useNavigate()
     const graphRef = useRef()
     useEffect(() => {
         if (!graphRef.current) {
@@ -13,8 +15,7 @@ const WordGraph = ({ data }) => {
         chart.container("wordGraphContainer");
         chart.draw();
         chart.listen("pointClick", function(e){
-            var url = "http://localhost:3000/peryeargraph:" + e.point.get("x");
-            window.open(url, "_blank");
+            navigate(`/peryeargraph:${e.point.get("x")}`, { replace: true })
         });
         return () => {
             if(!container) {

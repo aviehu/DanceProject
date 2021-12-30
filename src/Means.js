@@ -1,11 +1,9 @@
 import Page from "./Page"
 import Content from "./Content"
 import { Stack, Button } from "@mui/material"
-import { useState } from "react"
+import { Link } from "react-router-dom"
 
 const Means = () => {
-    const [page, setPage] = useState({})
-
     const hebrew = {
         group: "להקות",
         indie: "יוצרים עצמאיים",
@@ -17,20 +15,13 @@ const Means = () => {
         fontSize: 45
     }
 
-    const changePage = () => {
-        console.log('clicked')
-        window.location.href=`http://localhost:3000/${page.url}`
-        return <div></div>
-    }
-
     return(
         <Page>
             <Content>
                 <Stack spacing={4}>
-                    <Button style={buttonStyle} onClick={() => setPage({url: 'piechart:groupmeans'})}>{hebrew.group}</Button>
-                    <Button style={buttonStyle} onClick={() => setPage({url: 'piechart:indiemeans'})}>{hebrew.indie}</Button>
+                    <Link to='/piechart:groupmeans' style={{ textDecoration: 'none' }}><Button style={buttonStyle}>{hebrew.group}</Button></Link>
+                    <Link to='/piechart:indiemeans' style={{ textDecoration: 'none' }}><Button style={buttonStyle}>{hebrew.indie}</Button></Link>
                 </Stack>
-                {page.url ? changePage() : <div></div>}
             </Content>
         </Page>
     )

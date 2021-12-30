@@ -12,13 +12,14 @@ const WordPerYear = () => {
     const currWord = word.substring(1)
 
     useEffect(async () => {
+        setData({})
         const data = Controller.getAvgWordPerYear(currWord)
-        setData(data)
+        setTimeout(() => setData(data), 50)
     }, [])
 
     return (
         <Page>
-            {data.length > 0 ? <WordPerYearGraph data={data}/> : <div/>}
+            {data && data.length > 0 ? <WordPerYearGraph data={data}/> : <div/>}
         </Page>
     );
 };

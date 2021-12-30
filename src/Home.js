@@ -1,9 +1,8 @@
 import Page from "./Page"
 import Content from "./Content"
 import { Button, Stack } from "@mui/material"
-import { useState } from "react"
+import { Link } from "react-router-dom"
 const HomePage = () => {
-    const [page, setPage] = useState({})
     const hebrew ={
         people: "אנשים",
         content: "תוכן",
@@ -14,20 +13,14 @@ const HomePage = () => {
         fontSize: 70
     }
 
-    const changePage = () => {
-        window.location.href=`http://localhost:3000/${page.url}`
-        return <div></div>
-    }
-
     return (
         <Page>
             <Content>
                 <Stack spacing={4}>
-                    <Button style={buttonStyle} onClick={() => setPage({url: 'network:'})}>{hebrew.people}</Button>
-                    <Button style={buttonStyle} onClick={() => setPage({url: 'content'})}>{hebrew.content}</Button>
-                    <Button style={buttonStyle} onClick={() => setPage({url: 'means'})}>{hebrew.means}</Button>
+                    <Link to='/network:' style={{ textDecoration: 'none' }}><Button style={buttonStyle}>{hebrew.people}</Button></Link>
+                    <Link to='/content' style={{ textDecoration: 'none' }}><Button style={buttonStyle}>{hebrew.content}</Button></Link>
+                    <Link to='/means' style={{ textDecoration: 'none' }}><Button style={buttonStyle}>{hebrew.means}</Button></Link>
                 </Stack>
-                {page.url ? changePage() : <div></div>}
             </Content>
         </Page>
     )

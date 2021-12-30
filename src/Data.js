@@ -13,7 +13,7 @@ let maxYear = 0
 
 function addWords(text) {
     let wordsInRow = text.split(' ')
-    let keyWordsInRow = wordsInRow.map(wordInRow => {
+    let keyWordsInRow = Util.removeEndsList(wordsInRow).map(wordInRow => {
         if(dict[wordsInRow]){
             return dict[wordInRow]
         } else {

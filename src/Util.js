@@ -91,7 +91,8 @@ const Util = {
         let count = 0
         let str = dictText(string)
         const len = string.split(' ')
-        const keyWord = Data.getDict()[word]
+        let keyWord = Data.getDict()[word]
+        if (!keyWord) { keyWord = word } 
         while (str && str.length > 1 && str.search(word) > 0) {
             count ++
             str = str.substring(keyWord.length + str.search(keyWord))

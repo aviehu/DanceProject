@@ -1,15 +1,11 @@
 import { Button } from "@mui/material"
+import { Link } from "react-router-dom"
 
 const GraphButtons = ({first, second, third}) => {
 
-    const changePage = () => {
-        window.location.href=`http://localhost:3000/addShow`
-        return <div></div>
-    }
-
     return (
         <div>
-            <Button onClick={changePage}>הוסף יצירה</Button>
+            <Link to='/addShow' style={{ textDecoration: 'none' }}><Button>הוסף יצירה</Button></Link>
             <Button onClick={first}>כוריאוגרפים</Button>
             <Button onClick={second}>יצירות</Button>
             <Button onClick={third}>גרף</Button>

@@ -2,9 +2,9 @@ import Page from "./Page"
 import Content from "./Content"
 import { Stack, Button } from "@mui/material"
 import { useState } from "react"
+import { Link } from "react-router-dom"
 
 const ContentPage = () => {
-    const [page, setPage] = useState({})
 
     const hebrew = {
         avgWord: "ממוצע מלים לתוכנייה",
@@ -21,26 +21,18 @@ const ContentPage = () => {
         fontSize: 45
     }
 
-
-    const changePage = () => {
-        console.log('clicked')
-        window.location.href=`http://localhost:3000/${page.url}`
-        return <div></div>
-    }
-
     return(
         <Page>
             <Content>
                 <Stack spacing={4}>
-                    <Button style={buttonStyle} onClick={() => setPage({url: 'average:avgwordsintext'})}>{hebrew.avgWord}</Button>
-                    <Button style={buttonStyle} onClick={() => setPage({url: 'average:avgqoutesintext'})}>{hebrew.avgQoute}</Button>
-                    <Button style={buttonStyle} onClick={() => setPage({url: 'piechart:hebeng'})}>{hebrew.nameHebEng}</Button>
-                    <Button style={buttonStyle} onClick={() => setPage({url: 'peryeargraph:lan'})}>{hebrew.hebAvg}</Button>
-                    <Button style={buttonStyle} onClick={() => setPage({url: 'randomshow'})}>{hebrew.rndText}</Button>
-                    <Button style={buttonStyle} onClick={() => setPage({url: 'randomparagraph'})}>{hebrew.synText}</Button>
-                    <Button style={buttonStyle} onClick={() => setPage({url: 'wordscount'})}>{hebrew.wordCloud}</Button>
+                    <Link to='/average:avgwordsintext' style={{ textDecoration: 'none' }}><Button style={buttonStyle}>{hebrew.avgWord}</Button></Link>
+                    <Link to='/average:avgqoutesintext' style={{ textDecoration: 'none' }}><Button style={buttonStyle}>{hebrew.avgQoute}</Button></Link>
+                    <Link to='/piechart:hebeng' style={{ textDecoration: 'none' }}><Button style={buttonStyle}>{hebrew.nameHebEng}</Button></Link>
+                    <Link to='/peryeargraph:lan' style={{ textDecoration: 'none' }}><Button style={buttonStyle}>{hebrew.hebAvg}</Button></Link>
+                    <Link to='/randomshow' style={{ textDecoration: 'none' }}><Button style={buttonStyle}>{hebrew.rndText}</Button></Link>
+                    <Link to='/randomparagraph' style={{ textDecoration: 'none' }}><Button style={buttonStyle}>{hebrew.synText}</Button></Link>
+                    <Link to='/wordscount' style={{ textDecoration: 'none' }}><Button style={buttonStyle}>{hebrew.wordCloud}</Button></Link>
                 </Stack>
-                {page.url ? changePage() : <div></div>}
             </Content>
         </Page>
     )
